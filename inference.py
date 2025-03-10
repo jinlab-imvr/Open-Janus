@@ -36,8 +36,8 @@ vl_gpt = vl_gpt.to(torch.bfloat16).cuda().eval()
 conversation = [
     {
         "role": "User",
-        "content": "<image_placeholder>\nConvert the formula into latex code.",
-        "images": ["images/equation.png"],
+        "content": "<image_placeholder>\nWhat is this meme trying to express?",
+        "images": ["images/doge.png"],
     },
     {"role": "Assistant", "content": ""},
 ]
