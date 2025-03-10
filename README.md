@@ -21,14 +21,14 @@ Their team has released the inference code and pre-trained weights, but training
  TBD
 ### Visual Examples
 
-Below is an example of Janus's output given a medical imaging prompt.  
+#### Prompt: *A close-up high-contrast photo of Sydney Opera House sitting next to Eiffel tower, under a blue night sky of roiling energy, exploding yellow stars, and radiating swirls of blue..*  
 
-#### Prompt: *A Chest CT image.*  
+**Output** :  
+![Output](images/img_0.jpg)
 
-**Original Janus Output** (seems not good on medical tasks 🤔):  
-![Original Janus Output](images/img_0.jpg)
-
- 
+#### Prompt: *What is this meme trying to express*
+ **Image** :
+ ![Output](images/doge.png)
  ## Requirement
  Refer to [Janus](https://github.com/deepseek-ai/Janus) official:
 On the basis of `Python >= 3.8` environment, install the necessary dependencies by running the following command:
