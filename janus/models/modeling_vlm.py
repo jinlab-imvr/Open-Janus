@@ -203,9 +203,7 @@ class MultiModalityCausalLM(MultiModalityPreTrainedModel):
         gen_vision_config = config.gen_vision_config
         gen_vision_cls = model_name_to_cls(gen_vision_config.cls)
         self.gen_vision_model = gen_vision_cls()
-        print("gen vision model:", gen_vision_config.cls)
 
-        
         gen_aligner_config = config.gen_aligner_config
         gen_aligner_cls = model_name_to_cls(gen_aligner_config.cls)
         self.gen_aligner = gen_aligner_cls(gen_aligner_config.params)
