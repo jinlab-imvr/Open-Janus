@@ -16,19 +16,39 @@ Their team has released the inference code and pre-trained weights, but training
  - 25-03-08. This project is still quickly updating 🌝. Check TODO list to see what will be released next.
 
  ## Our Performance
+ TBD
  ### On Benchmark
- ### Visual Examples
+ TBD
+### Visual Examples
+
+Below is an example of Janus's output given a medical imaging prompt.  
+
+#### Prompt: *A Chest CT image.*  
+
+**Original Janus Output** (seems not good on medical tasks 🤔):  
+![Original Janus Output](images/img_0.jpg)
+
  
  ## Requirement
-
+ Refer to [Janus](https://github.com/deepseek-ai/Janus) official:
+On the basis of `Python >= 3.8` environment, install the necessary dependencies by running the following command:
+```shell
+pip install -e .
+```
  ## Run 
 
  ### Training
-
+Training Understanding Tasks.
+```shell
+python train.py
+```
+Training Generation Tasks.
+```shell
+python train_generation.py
+```
 
  ### Testing
-
-
+TBD.
  ## TODO LIST
 
 - [ ] Clean the code
