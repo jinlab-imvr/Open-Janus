@@ -29,6 +29,9 @@ Their team has released the inference code and pre-trained weights, but training
 #### Prompt: *What is this meme trying to express*
  **Image** :
  ![Output](images/doge.png)
+**Output** : *Assistant: The meme is trying to express the difference between two types of neural networks: "Decoupling Visual Encoding" and "Single Visual Encoder." The image uses the Shiba Inu (a breed of dog) to visually represent the two concepts. The "Decoupling Visual Encoding" is depicted as a muscular, strong dog, while the "Single Visual Encoder" is shown as a smaller, less muscular dog sitting down. This visual metaphor is used to contrast the two approaches to neural network architecture, highlighting the idea that a more powerful and efficient system is needed for visual data processing.*
+
+ 
  ## Requirement
  Refer to [Janus](https://github.com/deepseek-ai/Janus) official:
 On the basis of `Python >= 3.8` environment, install the necessary dependencies by running the following command:
