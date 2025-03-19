@@ -118,14 +118,26 @@ python eval/ans2submission/vqav2_submission.py \
 #### GQA
 
 1. Download the [data](https://cs.stanford.edu/people/dorarad/gqa/download.html) and [evaluation scripts](https://cs.stanford.edu/people/dorarad/gqa/evaluate.html) following the official instructions and put under `./playground/data/eval/gqa/data`. You may need to modify `eval.py` as [this](https://gist.github.com/haotian-liu/db6eddc2a984b4cbcc8a7f26fd523187) due to the missing assets in the GQA v1.2 release.
-2. Multi-GPU inference.
+2. Single-GPU inference.
 ```Shell
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 bash scripts/v1_5/eval/gqa.sh
+python eval/ckpt2ans/eval_vqav2.py \
+--image-folder path_to_GQA_image_folder \
+--question-file playground/data/eval/gqa/llava_gqa_testdev_balanced.jsonl \
+--answer_file playground/data/eval/gqa/output/merge.jsonl
+
+python eval/ans2submission/gqa_eval.py \
+--src  playground/data/eval/gqa/output/merge.jsonl \
+--dst playground/data/eval/gqa/data/testdev_balanced_predictions.json
+
+cd playground/data/eval/gqa/data
+python eval/eval.py --tier testdev_balanced
 ```
+Once you have the `testdev_balanced_predictions.json` put it in 
+
 
 
 #### Geneval
-From [Geneval](https://github.com/djghosh13/geneval), download the [evaluation_metadata.jsonl](https://github.com/djghosh13/geneval/blob/main/prompts/evaluation_metadata.jsonl) and put it in `./playground/data/eval/geneval/evaluation_metadata.jsonl.`
+From [Geneval](https://github.com/djghosh13/geneval), download the [evaluation_metadata.jsonl](https://github.com/djghosh13/geneval/blob/main/prompts/evaluation_metadata.jsonl) and put it in `./playground/data/eval/geneval`
 
 1. Generate image samples.
 You can add the following lines to `gen_eval.py` to ensure the reproducibility.
