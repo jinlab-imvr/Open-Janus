@@ -16,9 +16,7 @@ Their team has released the inference code and pre-trained weights, but training
  - 25-03-08. This project is still quickly updating 🌝. Check TODO list to see what will be released next.
 
  ## Our Performance
- TBD
- ### On Benchmark
- TBD
+ 
 ### Visual Examples
 
 #### Prompt: *A close-up high-contrast photo of Sydney Opera House sitting next to Eiffel tower, under a blue night sky of roiling energy, exploding yellow stars, and radiating swirls of blue..*  
@@ -67,9 +65,9 @@ pip install -e .
 | | VILA-U  | 7B | 85.8 | 1401.8 | - | 59.0 | 79.4 | 60.8 | - | 33.5 |
 | | Chameleon  | 7B | - | - | - | - | - | 22.4 | 8.3 | - |
 | | **Janus (Reported)** | 1.3B | 87.0 | 1338.0 | 69.4 | 63.7 | 77.3 | 59.1 | 30.5 | 34.3 |
-| | **Janus (Reproduced)** | 1.3B | - | - | - | - | 74.0 | - | - | - |
+| | **Janus (Reproduced)** | 1.3B | - | - | - | - | 74.0 | 53.4 | - | - |
  ### Generation
-
+We set seed to ```42```
 | Type | Method | # Params | Single Obj. | Two Obj. | Counting | Colors | Position | Color Attri. | Overall ↑ |
 |---------------|--------------|----------|-------------|----------|----------|--------|----------|--------------|------------|
 | **Gen. Only** | LlamaGen  | 0.8B | 0.71 | 0.34 | 0.21 | 0.58 | 0.07 | 0.04 | 0.32 |
@@ -85,7 +83,7 @@ pip install -e .
 | | LWM  | 7B | 0.93 | 0.41 | 0.46 | 0.79 | 0.09 | 0.15 | 0.47 |
 | | Chameleon  | 34B | - | - | - | - | - | - | 0.39 |
 | | **Janus (Reported)** | 1.3B | 0.97 | 0.68 | 0.30 | 0.84 | 0.46 | 0.42 | 0.61 |
-| | **Janus (Repproduced)** | 1.3B | - | - | - | - | - | - | - |
+| | **Janus (Reproduced)** | 1.3B | 0.70 | 0.38 | 0.13 | 0.50 | 0.16 | 0.17 | 0.34 |
  ## Run 
  ### Training
 Training Understanding Tasks.
@@ -124,6 +122,26 @@ python eval/ans2submission/vqav2_submission.py \
 ```Shell
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 bash scripts/v1_5/eval/gqa.sh
 ```
+
+
+#### Geneval
+From [Geneval](https://github.com/djghosh13/geneval), download the [evaluation_metadata.jsonl](https://github.com/djghosh13/geneval/blob/main/prompts/evaluation_metadata.jsonl) and put it in `./playground/data/eval/geneval/evaluation_metadata.jsonl.`
+
+1. Generate image samples.
+You can add the following lines to `gen_eval.py` to ensure the reproducibility.
+
+```python
+from pytorch_lightning import seed_everything
+
+for index, metadata in enumerate(metadatas):
+    ## Add Seed Here.
+    seed_everything(opt.seed)
+```
+
+```shell
+python eval/ckpt2ans/gen_eval.py --outdir playground/data/eval/geneval/data --n_samples 4
+```
+Onece you generate the image samples, follow the [environment setup](https://github.com/djghosh13/geneval/issues/12) instructions in [Geneval](https://github.com/djghosh13/geneval) to evaluate your samples.
 
  ## TODO LIST
 

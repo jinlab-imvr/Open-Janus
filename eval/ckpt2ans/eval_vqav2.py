@@ -71,9 +71,9 @@ def eval_model(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-path", type=str, default="deepseek-ai/Janus-1.3B")
-    parser.add_argument("--image-folder", type=str, default="/mnt/data1/fangzheng/Janus/data/test2015")
-    parser.add_argument("--question-file", type=str, default="/mnt/data1/fangzheng/Janus/data/json/vqav2/llava_vqav2_mscoco_test-dev2015.jsonl")
-    parser.add_argument("--answers-file", type=str, default="/mnt/data1/fangzheng/Janus/outputs/answer.jsonl")
+    parser.add_argument("--image-folder", type=str, default="/mnt/data1/fangzheng/LLaVA/playground/data/eval/gqa/data/images/images")
+    parser.add_argument("--question-file", type=str, default="/mnt/data1/fangzheng/LLaVA/playground/data/eval/gqa/llava_gqa_testdev_balanced.jsonl")
+    parser.add_argument("--answers-file", type=str, default="/mnt/data1/fangzheng/LLaVA/playground/data/eval/gqa/output/merge.jsonl")
     parser.add_argument("--batch-size", type=int, default=1)
     args = parser.parse_args()
 
